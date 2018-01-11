@@ -20,6 +20,7 @@
 /*大分类*/
 .main-class-item{
     font-size: 16px;
+    margin-top: 10px;
 }
 .main-class-item h4{
     height: 30px;
@@ -52,9 +53,10 @@
     border-radius: 20px;
 }
 
-/*子列表*/
+/*子项*/
 .sub-list{
     margin-left:35px;
+    margin-top: 5px;
 }
 .sub-list div {
     height: 30px;

@@ -15,6 +15,7 @@ class AsideList extends React.Component{
             list:props.resruit,
             allFlag:[]
         }
+        /*初始状态，全部为false*/
         this.state.list.map((item,index)=> {
             this.state.allFlag.push(false)
         })
@@ -32,7 +33,7 @@ class AsideList extends React.Component{
                     {this.state.list.map((item,index)=>{
                         return(
                             <li key={index} className="main-class-item">
-                                {/*一节列表*/}
+                                {/*一级大分类*/}
                                 <h4>
                                     <input type="checkbox" onClick={this.mainChoice.bind(this,index)} />
                                     <p>{item.itemName}</p>
@@ -78,7 +79,6 @@ class AsideList extends React.Component{
             allFlag:newFalg
         })
         let currentEl = this.getEle(val)
-        console.log(this.state.allFlag)
         if(newFalg[val]) {
             currentEl.style.background = "blue";
         }else{
