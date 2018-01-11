@@ -1,9 +1,16 @@
 import React,{Component} from 'react'
 import SubList from './SubList'
 
+/**
+* 侧边栏列表
+* */
 class AsideList extends React.Component{
     constructor(props){
         super(props)
+        /*
+        * list:展示数据，正常项目中ajax
+        * allFlag:所有选选项的状态
+        * */
         this.state={
             list:props.resruit,
             allFlag:[]
@@ -14,27 +21,44 @@ class AsideList extends React.Component{
     }
     render(){
         return(
-            <ul>
-                {this.state.list.map((item,index)=>{
-                    return(
-                        <li key={index} className="main-class-item">
-                            <h4>
-                                <input type="checkbox" style={{background:this.state.allFlag[index]?"blue":"rgba(0,0,0,0)"}} onClick={this.mainChoice.bind(this,index)}/>
-                                <p>{item.itemName}-{this.state.allFlag[index]?"blue":"rgba(0,0,0,0)"}</p>
-                                <span>{item.total}</span>
-                            </h4>
-                            <SubList subItem={item.subItem} valCheck={this.valCheck.bind(this)} fatherNo={index}></SubList>
-                        </li>
-                    )
-                })}
-            </ul>
+            <div>
+                <div className="aside-title">
+                    {/*标题和清除*/}
+                    <h3>招聘岗位</h3>
+                    <span onClick={this.clearAll.bind(this)}>清空</span>
+                </div>
+                <ul>
+                    {/*主列表*/}
+                    {this.state.list.map((item,index)=>{
+                        return(
+                            <li key={index} className="main-class-item">
+                                {/*一节列表*/}
+                                <h4>
+                                    <input type="checkbox" onClick={this.mainChoice.bind(this,index)} />
+                                    <p>{item.itemName}</p>
+                                    <span>{item.total}</span>
+                                </h4>
+                                {/*二级子列表组件*/}
+                                <SubList subItem={item.subItem} valCheck={this.valCheck.bind(this)} fatherNo={index} ref={"all"+index}></SubList>
+                            </li>
+                        )
+                    })}
+                </ul>
+            </div>
         )
     }
+    /*子列表是否全部选中，如果全部选中则一级自动选中*/
     valCheck(arr,FatherNo){
         let flag = true
         arr.map((item,index)=>{
             if(!item){
                 flag=false
+                this.getEle(FatherNo).style.background = "rgba(0,0,0,0)";
+                let newFalg = this.state.allFlag;
+                newFalg[FatherNo]=false
+                this.setState=({
+                    allFlag:newFalg
+                })
             }
         })
         if(flag){
@@ -43,16 +67,39 @@ class AsideList extends React.Component{
             this.setState=({
                 allFlag:newFalg
             })
-            console.log(this.state.allFlag)
+            this.getEle(FatherNo).style.background = "blue";
         }
     }
+    /*点击全选选中所有子项*/
     mainChoice(val){
         let newFalg = this.state.allFlag;
         newFalg[val]=!newFalg[val]
         this.setState=({
             allFlag:newFalg
         })
+        let currentEl = this.getEle(val)
         console.log(this.state.allFlag)
+        if(newFalg[val]) {
+            currentEl.style.background = "blue";
+        }else{
+            currentEl.style.background = "rgba(0,0,0,0)";
+        }
+        this.refs['all'+val].allVal(newFalg[val])
+    }
+    /*清空所有选项*/
+    clearAll(){
+        let sum=0;
+        for(let item in this.refs){
+            this.getEle(sum).style.background = "rgba(0,0,0,0)";
+            this.refs[item].allVal(false)
+            sum++;
+        }
+    }
+    /*获取点击的父项*/
+    getEle(val){
+        return document.getElementsByClassName("main-class-item")[val]
+            .getElementsByTagName("h4")[0]
+            .getElementsByTagName("input")[0];
     }
 }
 

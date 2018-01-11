@@ -1,3 +1,4 @@
+/*侧边栏头部*/
 .aside-title{
     height: 34px;
     margin-bottom: 20px;
@@ -13,8 +14,10 @@
     font-size: 16px;
     color:#fcfefe;
     float: right;
+    cursor: pointer;
 }
 
+/*大分类*/
 .main-class-item{
     font-size: 16px;
 }
@@ -28,6 +31,8 @@
     float: left;
     margin-left: 18px;
 }
+/*选择框*/
+.main-class-item div input,
 .main-class-item h4 input{
     border-radius: 4px;
     float: left;
@@ -36,6 +41,7 @@
     appearance:none;
     width:16px;
     height: 16px;
+    cursor: pointer;
 }
 .main-class-item h4 span{
     font-size: 16px;
@@ -46,6 +52,7 @@
     border-radius: 20px;
 }
 
+/*子列表*/
 .sub-list{
     margin-left:35px;
 }
@@ -57,15 +64,6 @@
     color:#bdd0d2;
     float: left;
     margin-left: 18px;
-}
-.main-class-item div input{
-    border-radius: 4px;
-    float: left;
-    border: 2px solid #ddd;
-    background-color: rgba(0,0,0,0);
-    appearance:none;
-    width:16px;
-    height: 16px;
 }
 .main-class-item div span{
     font-size: 16px;

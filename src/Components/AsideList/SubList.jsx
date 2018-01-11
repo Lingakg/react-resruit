@@ -4,6 +4,10 @@ import './aside-component.css'
 class SubList extends React.Component{
     constructor(props){
         super(props)
+        /**
+         * itemList：子项的列表
+         * arrVal: 选中状态
+         * */
         this.state = {
             itemList:props.subItem,
             arrVal:[]
@@ -11,6 +15,7 @@ class SubList extends React.Component{
         this.state.itemList.map((item,index)=> {
             this.state.arrVal.push(false)
         })
+        this.allVal.bind(this)
     }
     render(){
         return(
@@ -31,6 +36,7 @@ class SubList extends React.Component{
             </ul>
         )
     }
+    /*点击选择*/
     choice(val){
         let newStatus = this.state.arrVal;
         newStatus[val] = !newStatus[val];
@@ -39,6 +45,20 @@ class SubList extends React.Component{
             arrVal:newStatus
         })
         this.props.valCheck(this.state.arrVal,this.props.fatherNo)
+    }
+    /*执行所有的选中*/
+    allVal(isAll){
+        let updateStatus = this.state.arrVal
+        this.state.itemList.map((item,index)=> {
+            if(isAll){
+                updateStatus[index]=true
+            }else{
+                updateStatus[index]=false
+            }
+        })
+        this.setState({
+            arrVal:updateStatus
+        })
     }
 }
 

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import AsideList from '../../Components/AsideList/AsideList'
-import AsideTitle from '../../Components/AsideList/AsideTitle'
 import './aside.css'
 
 class Aside extends React.Component {
     constructor(props){
         super(props)
+        //实际项目中ajax获取
         this.state = {
             resruit:[
                 {
@@ -63,9 +63,10 @@ class Aside extends React.Component {
         return (
             <section>
                <div className="aside-container">
-                       <AsideTitle></AsideTitle>
-                       <AsideList resruit={this.state.resruit}></AsideList>
+                   {/*整个list多选栏*/}
+                   <AsideList resruit={this.state.resruit}></AsideList>
                </div>
+                /*根据ui图加上的一个待使用区域*/
                 <div className="aside-container"></div>
             </section>
         );
