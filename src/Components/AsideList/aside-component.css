@@ -1,0 +1,74 @@
+.aside-title{
+    height: 34px;
+    margin-bottom: 20px;
+}
+
+.aside-title h3{
+    font-size: 24px;
+    color:#cedae0;
+    float: left;
+    font-weight: 300;
+}
+.aside-title span{
+    font-size: 16px;
+    color:#fcfefe;
+    float: right;
+}
+
+.main-class-item{
+    font-size: 16px;
+}
+.main-class-item h4{
+    height: 30px;
+    font-weight: 300;
+}
+.main-class-item h4 p{
+    font-size: 16px;
+    color:#f9fdf5;
+    float: left;
+    margin-left: 18px;
+}
+.main-class-item h4 input{
+    border-radius: 4px;
+    float: left;
+    border: 2px solid #ddd;
+    background-color: rgba(0,0,0,0);
+    appearance:none;
+    width:16px;
+    height: 16px;
+}
+.main-class-item h4 span{
+    font-size: 16px;
+    color:#f9fdf5;
+    float: right;
+    background-color:#4a6a78 ;
+    padding: 2px 10px;
+    border-radius: 20px;
+}
+
+.sub-list{
+    margin-left:35px;
+}
+.sub-list div {
+    height: 30px;
+}
+.main-class-item div p{
+    font-size: 16px;
+    color:#bdd0d2;
+    float: left;
+    margin-left: 18px;
+}
+.main-class-item div input{
+    border-radius: 4px;
+    float: left;
+    border: 2px solid #ddd;
+    background-color: rgba(0,0,0,0);
+    appearance:none;
+    width:16px;
+    height: 16px;
+}
+.main-class-item div span{
+    font-size: 16px;
+    color:#a6b8bd;
+    float: right;
+}
