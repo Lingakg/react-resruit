@@ -5,8 +5,12 @@ class SubList extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            itemList:props.subItem
+            itemList:props.subItem,
+            arrVal:[]
         }
+        this.state.itemList.map((item,index)=> {
+            this.state.arrVal.push(false)
+        })
     }
     render(){
         return(
@@ -16,7 +20,7 @@ class SubList extends React.Component{
                         return (
                             <li key={index}>
                                 <div>
-                                    <input type="checkbox"/>
+                                    <input type="checkbox" onClick={this.choice.bind(this,index)} style={{background:this.state.arrVal[index]?"blue":"rgba(0,0,0,0)"}}/>
                                     <p>{item.itemName}</p>
                                     <span>{item.total}</span>
                                 </div>
@@ -26,6 +30,15 @@ class SubList extends React.Component{
                 }
             </ul>
         )
+    }
+    choice(val){
+        let newStatus = this.state.arrVal;
+        newStatus[val] = !newStatus[val];
+        let flag = false;
+        this.setState({
+            arrVal:newStatus
+        })
+        this.props.valCheck(this.state.arrVal,this.props.fatherNo)
     }
 }
 
