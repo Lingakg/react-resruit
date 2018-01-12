@@ -10,7 +10,8 @@ class SubList extends React.Component{
          * */
         this.state = {
             itemList:props.subItem,
-            arrVal:[]
+            arrVal:[],
+            isOpen:true
         }
         this.state.itemList.map((item,index)=> {
             this.state.arrVal.push(false)
@@ -19,7 +20,7 @@ class SubList extends React.Component{
     }
     render(){
         return(
-            <ul className="sub-list">
+            <ul className={this.state.isOpen?"sub-list open":"sub-list close"}>
                 {
                     this.state.itemList.map((item,index)=> {
                         return (
@@ -58,6 +59,11 @@ class SubList extends React.Component{
         })
         this.setState({
             arrVal:updateStatus
+        })
+    }
+    toggle(flag){
+        this.setState({
+            isOpen:flag
         })
     }
 }

@@ -13,11 +13,13 @@ class AsideList extends React.Component{
         * */
         this.state={
             list:props.resruit,
-            allFlag:[]
+            allFlag:[],
+            toggles:[]
         }
         /*初始状态，全部为false*/
         this.state.list.map((item,index)=> {
             this.state.allFlag.push(false)
+            this.state.toggles.push(true)
         })
     }
     render(){
@@ -37,6 +39,7 @@ class AsideList extends React.Component{
                                 <h4>
                                     <input type="checkbox" onClick={this.mainChoice.bind(this,index)} />
                                     <p>{item.itemName}</p>
+                                    <em onClick={this.toggleShow.bind(this,index)} className={this.state.toggles[index]?"btn-open":"btn-close"}></em>
                                     <span>{item.total}</span>
                                 </h4>
                                 {/*二级子列表组件*/}
@@ -78,6 +81,7 @@ class AsideList extends React.Component{
         this.setState=({
             allFlag:newFalg
         })
+
         let currentEl = this.getEle(val)
         if(newFalg[val]) {
             currentEl.style.background = "blue";
@@ -94,6 +98,18 @@ class AsideList extends React.Component{
             this.refs[item].allVal(false)
             sum++;
         }
+    }
+    /*点击展开和收起切换*/
+    toggleShow(index){
+        var upToggle = this.state.toggles;
+        upToggle[index] = !upToggle[index]
+        let tgleEl = document.getElementsByClassName("main-class-item")[index].getElementsByTagName("em")[0];
+        if(upToggle[index]){
+            tgleEl.className = "btn-open"
+        }else{
+            tgleEl.className = "btn-close"
+        }
+        this.refs['all'+index].toggle(upToggle[index])
     }
     /*获取点击的父项*/
     getEle(val){
