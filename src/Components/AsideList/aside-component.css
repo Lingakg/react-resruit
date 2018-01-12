@@ -82,19 +82,18 @@
     overflow: hidden;
     transition: height 0.5s;
 }
-.btn-close{
-    display: inline-block;
-    transform:rotate(180deg);
-    background: url("../../assets/icon.png");
-    width: 20px;
-    height: 10px;
-    margin-left: 10px;
-}
+.btn-close,
 .btn-open{
     display: inline-block;
-    transform:rotate(0deg);
     background: url("../../assets/icon.png");
     width: 20px;
     height: 10px;
     margin-left: 10px;
+    transition: transform 0.5s;
+}
+.btn-close{
+    transform:rotate(0deg);
+}
+.btn-open{
+    transform:rotate(180deg);
 }
